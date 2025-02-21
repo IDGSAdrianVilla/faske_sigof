@@ -1,0 +1,43 @@
+<div class="pagetitle">
+    <h1>Códigos</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Catálogos</li>
+            <li class="breadcrumb-item active">Códigos</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body row g-3" style="margin-top: 0px;  position: relative;">
+                    <div class="col-xxl-2 col-md-3 col-6">
+                        <div class="group-dropdown-form">
+                            <label for="dropDown" class="form-label required">Tipo:</label><br>
+                            <app-dropdown [options]="listaTiposCodigos" [font]="'tiposCodigos'" (selectionChange)="cambioFiltrosBusqueda()"></app-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="col-xxl-2 col-md-3 col-6">
+                        <div class="group-dropdown-form">
+                            <label for="dropDown" class="form-label required">Status:</label><br>
+                            <app-dropdown [options]="listaStatusCodigos" [font]="'statusCodigos'" (selectionChange)="cambioFiltrosBusqueda()"></app-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="botonera">
+                        <button class="btn btn-primary btn-sm" (click)="agregarCodigo()">Agregar</button>
+                        <button class="btn btn-success btn-sm">Exportar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <app-datatable [columnasTabla]="columnasTabla" [datosTabla]="datosTabla" [tableConfig]="tableConfig" [tableType]="'dynamic'" (actionSelected)="opcionSeleccionada($event)"></app-datatable>
+            <br>
+        </div>
+    </div>
+</section>

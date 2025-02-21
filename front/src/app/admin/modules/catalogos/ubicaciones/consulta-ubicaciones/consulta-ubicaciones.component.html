@@ -1,0 +1,43 @@
+<div class="pagetitle">
+    <h1>Ubicaciones</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Catálogos</li>
+            <li class="breadcrumb-item active">Ubicacioes</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body row g-3" style="margin-top: 0px;  position: relative;">
+                    <div class="col-xxl-2 col-md-3 col-7">
+                        <div class="group-dropdown-form">
+                            <label for="dropDown" class="form-label required">Planta:</label><br>
+                            <app-dropdown [options]="listaPlantas" [font]="'plantas'" (selectionChange)="obtenerInformacionPorPlantas($event)"></app-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="botonera">
+                        <button class="btn btn-primary btn-sm">Agregar</button>
+                        <button class="btn btn-success btn-sm">Exportar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <app-datatable [columnasTabla]="columnasTabla" [datosTabla]="datosTabla" [tableConfig]="tableConfig" [tableType]="'dynamic'" (actionSelected)="opcionSeleccionada($event)"></app-datatable>
+            <br>
+        </div>
+        <div *ngIf="datosTabla.length > 0" class="col-xxl-4 col-lg-6">
+            <div class="card">
+                <div class="card-body card-w-title">
+                    <canvas id="estadisticasUbicaciones"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

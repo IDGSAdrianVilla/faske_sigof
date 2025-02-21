@@ -1,0 +1,140 @@
+<div class="pagetitle">
+    <h1>Unidades de medida</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Catálogos</li>
+            <li class="breadcrumb-item">Códigos</li>
+            <li class="breadcrumb-item active">Unidades de medida</li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body card-w-title">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="btn btn-sm active" id="pills-home-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-home" role="tab" aria-controls="pills-home"
+                                            aria-selected="true">Nuevo</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="btn btn-sm" id="pills-profile-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-profile" role="tab" aria-controls="pills-profile"
+                                            aria-selected="false" tabindex="-1">Asignar</button>
+                                    </li>
+                                </ul>
+                            </div>
+        
+                            <div class="tab-content pt-2" id="myTabContent">
+                                <div class="tab-pane fade active show" id="pills-home" role="tabpanel"
+                                    aria-labelledby="home-tab">
+                                    <div class="row g-3">
+                                        <div class="col-12" *ngFor="let unidad_medida of unidades_medida;  let i = index">
+                                            <label class="form-label required">{{unidad_medida.titulo == 'Conversión' ?
+                                                unidad_medida.titulo +' '+ i : unidad_medida.titulo}}:</label>
+                                            <div class="row g-3">
+                                                <div class="col-xxl-7 col-lg-6 col-7">
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="{{unidad_medida.titulo == 'Conversión' ? unidad_medida.titulo +' '+ i : unidad_medida.titulo}}"
+                                                        [(ngModel)]="unidad_medida.unidad_medida">
+                                                </div>
+                                                <div class="col-xxl-3 col-lg-3 col-3">
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Abrev."
+                                                        [(ngModel)]="unidad_medida.abreviacion">
+                                                </div>
+                                                <div class="col-xxl-2 col-lg-3 col-2">
+                                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example"
+                                                        style="width: 100%;">
+                                                        <button *ngIf="i > 0" class="btn btn-sm btn-outline-danger form-control"
+                                                            (click)="unidades_medida.splice(i, 1)">x</button>
+                                                        <button *ngIf="(i == unidades_medida.length - 1)"
+                                                            class="btn btn-sm btn-outline-info form-control"
+                                                            (click)="unidades_medida.push({titulo: 'Conversión', unidad_medida: '', abreviacion: ''})">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="d-flex justify-content-center align-items-center" style="margin-top: 20px;">
+                                        <button class="btn btn-primary btn-sm">Guardar</button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium
+                                    distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio
+                                    similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div *ngIf="obtenerTextoUnidades != ''" class="col-12">
+                        <div class="alert alert-info alert-dismissible fade show t-center" role="alert">
+                            <div [innerHTML]="obtenerTextoUnidades"></div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            
+            <div class="card" style="margin-top: 0px !important; margin-bottom: -5px !important;">
+                <div class="card-body" style="margin-bottom: -20px !important;">
+                    <div id="totalBloqueCerrar" class="accordion accordion-flush">
+                        <div class="accordion-item">
+                            <h2 id="flush-headingOne" class="accordion-header">
+                                <button type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#caracteristicas-producto" aria-expanded="true"
+                                    aria-controls="flush-collapseOne" class="accordion-button"
+                                    style="padding: 0px !important">
+                                    <h5 class="card-title title-categorias-ipad">Características</h5>
+                                </button>
+                            </h2>
+                            <div id="caracteristicas-producto" aria-labelledby="flush-headingOne"
+                                data-bs-parent="#accordionFlushExample" class="accordion-collapse collapse show">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Alimentación</th>
+                                                <td>125 V 60 Hz 15 A</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Calibre de cable</th>
+                                                <td>16 AWG</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Carga Máxima</th>
+                                                <td>1875 W</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Longitud de Cable</th>
+                                                <td>0,90 m</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Temperatura máxima de operación</th>
+                                                <td>60°</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

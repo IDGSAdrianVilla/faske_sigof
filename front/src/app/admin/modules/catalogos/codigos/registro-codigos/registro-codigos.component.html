@@ -1,0 +1,158 @@
+<div class="modal-body dashboard">
+    <div class="pagetitle">
+        <h1>
+            Agregar código
+        </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Catálogos</li>
+                <li class="breadcrumb-item">Códigos</li>
+                <li class="breadcrumb-item active">Agregar código</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="col-12 dashboard" style="margin-bottom: -10px;">
+        <div class="card">
+            <div class="card-body card-w-title">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <form class="row g-3" autocomplete="off" [formGroup]="formCodigo">
+                            <div class="col-6">
+                                <div class="group-dropdown-form">
+                                    <label for="dropDown" class="form-label required">Área que solicita:</label><br>
+                                    <app-dropdown [options]="listaAreas" [font]="'areas'"></app-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="group-dropdown-form">
+                                    <label for="dropDown" class="form-label required">Tipo de código:</label><br>
+                                    <app-dropdown [options]="listaTiposCodigo" [font]="'tiposCodigos'"></app-dropdown>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group-dropdown-form">
+                                    <label for="dropDown" class="form-label required">Cliente:</label><br>
+                                    <app-dropdown [options]="listaClientes" [font]="'clientes'"></app-dropdown>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12">
+                        <section class="row g-3">
+                            <div *ngIf="nomenclautra == true" class="col-8">
+                                <div class="group-dropdown-form">
+                                    <label for="dropDown" class="form-label required">Nomenclatura:</label><br>
+                                    <app-dropdown [options]="listaNomenclaturas"
+                                        [font]="'nomenclaturas'"></app-dropdown>
+                                </div>
+                            </div>
+                            <div class="col t-center">
+                                <label for="nomenclatura" class="form-label mb-0 me-2">Nomenclatura:</label>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" id="nomenclatura" class="form-check-input"
+                                                style="margin-top: 13px;" [(ngModel)]="nomenclautra">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-12">
+                        <form class="row g-3" autocomplete="off" [formGroup]="formCodigo">
+                            <div class="col-12">
+                                <label for="codigo" class="form-label required">Código:</label>
+                                <input type="text" formControlName="codigo"
+                                    class="form-control form-control-sm t-center" id="codigo" placeholder="Código"
+                                    (keypress)="soloTexto($event)">
+                            </div>
+                            <div class="col-12">
+                                <label for="descripcion" class="form-label required">Descripción:</label>
+                                <textarea formControlName="descripcion" (input)="adjustTextareaHeight($event)" rows="2"
+                                    class="form-control form-control-sm" placeholder="Descripción"
+                                    (keypress)="soloTexto($event)"></textarea>
+                            </div>
+                            <div class="col-4 t-center">
+                                <label for="caducidad" class="form-label mb-0 me-2">Caducidad:</label>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" formControlName="caducidad" id="caducidad"
+                                                class="form-check-input" style="margin-top: 13px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <label class="form-label required">Unidad de medida:</label>
+                                <select formControlName="unidadMedida" class="form-control form-control-sm t-center">
+                                    <option value="" style="display: none; visibility: hidden;">Seleccione unidad de
+                                        medida</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label required">Tipo de entrada:</label>
+                                <select formControlName="tipoEntrada" class="form-control form-control-sm t-center">
+                                    <option value="" style="display: none; visibility: hidden;">Seleccione tipo de
+                                        entrada</option>
+                                    <option value="1">SAP</option>
+                                    <option value="1">Faske</option>
+                                </select>
+                            </div>
+                            <div class="col-4 t-center">
+                                <label for="calidad" class="form-label mb-0 me-2">Calidad:</label>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" formControlName="calidad" id="calidad"
+                                                class="form-check-input" style="margin-top: 13px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 t-center">
+                                <label for="omitirConteo" class="form-label mb-0 me-2">Omitir conteo:</label>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" formControlName="omitirConteo" id="omitirConteo"
+                                                class="form-check-input" style="margin-top: 13px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4 t-center">
+                                <label for="porValidar" class="form-label mb-0 me-2">Por validar:</label>
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-center align-items-center">
+                                        <div class="form-check form-switch">
+                                            <input type="checkbox" formControlName="porValidar" id="porValidar"
+                                                class="form-check-input" style="margin-top: 13px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="this.formCodigo.value.porValidar" class="col-12">
+                                <label for="descripcionPorValidar" class="form-label required">Descripción por
+                                    validar:</label>
+                                <textarea formControlName="descripcionPorValidar" (input)="adjustTextareaHeight($event)"
+                                    rows="2" class="form-control form-control-sm" placeholder="Descripción por validar"
+                                    (keypress)="soloTexto($event)"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer" style="text-align: center;">
+    <button class="btn btn-sm btn-danger" (click)="cerrarModal()">
+        Cerrar
+    </button>
+</div>

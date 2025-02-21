@@ -1,0 +1,37 @@
+<div class="modal-body dashboard">
+    <div class="pagetitle">
+        <h1>
+            Detalle ubicación
+        </h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Catálogos</li>
+                <li class="breadcrumb-item">Ubicaciones</li>
+                <li class="breadcrumb-item active">
+                    Detalle ubicación
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="filter" data-bs-toggle="dropdown">
+        <button class="btn btn-primary btn-sm" style="border-radius: 10px; color: white;">
+            <i class="bi bi-info-circle"></i>
+        </button>
+    </div>
+
+    <ul class="dropdown-menu">
+        <div class="t-center">
+        </div>
+    </ul>
+
+    <div class="col-12 dashboard" style="margin-bottom: 10px;">
+        <app-datatable [columnasTabla]="columnasTabla" [datosTabla]="datosTabla" [tableConfig]="tableConfig" [tableType]="'dynamic'"></app-datatable>
+    </div>
+</div>
+
+<div class="modal-footer" style="text-align: center;">
+    <button class="btn btn-sm btn-danger" (click)="cerrarModal()">
+        Cerrar
+    </button>
+</div>
